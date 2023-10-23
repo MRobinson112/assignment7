@@ -1,0 +1,74 @@
+---
+title: 'Assignment #7'
+author: "Michael Robinson"
+date: "`r Sys.Date()`"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+# Load the necessary libraries
+library(rvest)
+library(jsonlite)
+library(XML)
+library(xml2)
+
+#html Data File 
+
+book_data <- "https://raw.githubusercontent.com/MRobinson112/assignment7/main/books1.html"
+
+html_file <- readLines(book_data)
+html_file <- paste(html_file, "\n", collapse = "\n")
+
+html_data <- read_html(html_file)
+html_table <- html_data %>% html_table(fill = TRUE)
+html_data_frame <- as.data.frame(html_table)
+
+colnames(html_data_frame) <- c("Title", "Author", "ISBN", "Pages", "Publisher", "Attributes")
+
+print(html_data_frame)
+
+#XML Book File
+
+
+xml_data <- "https://raw.githubusercontent.com/MRobinson112/assignment7/main/books1.xml"
+
+xml_file <- readLines(xml_data, warn = FALSE)
+
+xml_file <- paste(xml_file, collapse = "\n")
+
+if (nzchar(xml_file)) {
+  xml_data <- xmlParse(xml_file)
+  
+  xml_data_frame <- xmlToDataFrame(xml_data)
+  
+  print(xml_data_frame)
+} else {
+  cat("XML content is empty or invalid.\n")
+}
+
+#Json book file 
+
+json_data <- "https://raw.githubusercontent.com/MRobinson112/assignment7/main/book1.json"
+json_file <- fromJSON(json_data)
+
+json_data_frame <- as.data.frame(json_file$books)
+
+print(json_data_frame)
+
+```
+
+## Conclusion 
+
+After reading all three file into R and looking at the from all the data they are all identical. the only difference i notices is the json output was automatically numbered.
