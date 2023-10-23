@@ -1,0 +1,29 @@
+{
+    "books": [
+      {
+        "title": "The Catcher in the Rye",
+        "author": "J.D. Salinger",
+        "isbn": "978-0-316-76948-7",
+        "pages": 277,
+        "publisher": "Little, Brown and Company",
+        "Attributes":"Coming of age, alienation, and identity."
+      },
+      {
+        "title": "All the President's Men",
+        "author": " Carl Bernstein and Bob Woodward",
+        "isbn": "978-0-671-21781-5",
+        "pages": 349,
+        "publisher": "Simon & Schuster",
+        "Attributes":"Investigative journalism, Watergate scandal, political history."
+      },
+      {
+        "title": "The Alchemist",
+        "author": "Paulo Coelho",
+        "isbn": "978-0-06-231500-7",
+        "pages": 208,
+        "publisher": "HarperOne",
+        "Attributes":" Quest, personal legend, destiny."
+      }
+    ]
+  }
+  
